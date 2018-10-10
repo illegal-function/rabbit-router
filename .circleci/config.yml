@@ -19,6 +19,8 @@ jobs:
 
     environment:
       RABBITMQ_URI: amqp://localhost
+      RABBITMQ_EXCHANGE: ptp
+      RABBITMQ_SERVICE: test
 
     steps:
       - checkout
