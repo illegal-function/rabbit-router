@@ -1,0 +1,22 @@
+version: '3.6'
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    networks:
+      - ptp
+  application:
+    image: node:latest
+    depends_on:
+      - rabbitmq
+    working_dir: "/usr/src/app"
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - RABBITMQ_URI=amqp://rabbitmq
+      - RABBITMQ_EXCHANGE=ptp
+      - RABBITMQ_SERVICE=test
+    networks:
+      - ptp
+    command: npm test
+networks:
+  ptp:
