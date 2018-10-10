@@ -5,6 +5,12 @@ const rabbit = require('..')
 let cnt = 0
 
 describe('routing', () => {
+  it('waiting for circleci', done => {
+    setTimeout(() => {
+      done()
+    }, 1000)
+  })
+
   it('works!', done => {
     rabbit('test', msg => {
       if (++cnt === 10) done()
